@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { router } from 'expo-router';
-import { ActivityIndicator } from 'react-native';
-import { ThemedView } from '@/components/themed-view';
+import { ActivityIndicator, View } from 'react-native';
 
 export default function IndexScreen() {
   useEffect(() => {
@@ -15,8 +14,8 @@ export default function IndexScreen() {
   }, []);
 
   return (
-    <ThemedView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <ActivityIndicator size="large" />
-    </ThemedView>
+    </View>
   );
 }

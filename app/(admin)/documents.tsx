@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { router } from 'expo-router';
-import { StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, ScrollView, Alert, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -80,18 +78,18 @@ export default function ManageDocumentsScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
-      <ThemedView style={styles.header}>
-        <ThemedText type="title" style={styles.title}>
+      <View style={styles.header}>
+        <Text style={styles.title}>
           Manage Documents
-        </ThemedText>
-        
-        <ThemedView style={styles.headerButtons}>
+        </Text>
+
+        <View style={styles.headerButtons}>
           <TouchableOpacity
             style={styles.headerButton}
             onPress={handleNavigateToCategories}
           >
             <IconSymbol name="folder" size={16} color="#007AFF" />
-            <ThemedText style={styles.headerButtonText}>Categories</ThemedText>
+            <Text style={styles.headerButtonText}>Categories</Text>
           </TouchableOpacity>
           
           <TouchableOpacity
@@ -99,63 +97,63 @@ export default function ManageDocumentsScreen() {
             onPress={handleAddDocument}
           >
             <IconSymbol name="plus" size={16} color="white" />
-            <ThemedText style={[styles.headerButtonText, styles.primaryButtonText]}>
+            <Text style={[styles.headerButtonText, styles.primaryButtonText]}>
               Add Document
-            </ThemedText>
+            </Text>
           </TouchableOpacity>
-        </ThemedView>
-      </ThemedView>
+        </View>
+      </View>
 
       <ScrollView style={styles.content}>
-        <ThemedView style={styles.stats}>
-          <ThemedView style={styles.statCard}>
-            <ThemedText style={styles.statNumber}>{documents.length}</ThemedText>
-            <ThemedText style={styles.statLabel}>Total Documents</ThemedText>
-          </ThemedView>
-          
-          <ThemedView style={styles.statCard}>
-            <ThemedText style={styles.statNumber}>
-              {documents.filter(d => d.status === 'Published').length}
-            </ThemedText>
-            <ThemedText style={styles.statLabel}>Published</ThemedText>
-          </ThemedView>
-          
-          <ThemedView style={styles.statCard}>
-            <ThemedText style={styles.statNumber}>
-              {documents.filter(d => d.status === 'Draft').length}
-            </ThemedText>
-            <ThemedText style={styles.statLabel}>Drafts</ThemedText>
-          </ThemedView>
-        </ThemedView>
+        <View style={styles.stats}>
+          <View style={styles.statCard}>
+            <Text style={styles.statNumber}>{documents.length}</Text>
+            <Text style={styles.statLabel}>Total Documents</Text>
+          </View>
 
-        <ThemedView style={styles.documentsSection}>
-          <ThemedText style={styles.sectionTitle}>Documents</ThemedText>
-          
+          <View style={styles.statCard}>
+            <Text style={styles.statNumber}>
+              {documents.filter(d => d.status === 'Published').length}
+            </Text>
+            <Text style={styles.statLabel}>Published</Text>
+          </View>
+
+          <View style={styles.statCard}>
+            <Text style={styles.statNumber}>
+              {documents.filter(d => d.status === 'Draft').length}
+            </Text>
+            <Text style={styles.statLabel}>Drafts</Text>
+          </View>
+        </View>
+
+        <View style={styles.documentsSection}>
+          <Text style={styles.sectionTitle}>Documents</Text>
+
           {documents.map((document) => (
-            <ThemedView key={document.id} style={styles.documentCard}>
-              <ThemedView style={styles.documentHeader}>
-                <ThemedView style={styles.documentInfo}>
-                  <ThemedText style={styles.documentTitle}>{document.title}</ThemedText>
-                  <ThemedText style={styles.documentMeta}>
+            <View key={document.id} style={styles.documentCard}>
+              <View style={styles.documentHeader}>
+                <View style={styles.documentInfo}>
+                  <Text style={styles.documentTitle}>{document.title}</Text>
+                  <Text style={styles.documentMeta}>
                     Category: {document.category} • Updated: {document.lastUpdated}
-                  </ThemedText>
-                </ThemedView>
-                
-                <ThemedView style={[
+                  </Text>
+                </View>
+
+                <View style={[
                   styles.statusBadge,
                   { backgroundColor: getStatusColor(document.status) }
                 ]}>
-                  <ThemedText style={styles.statusText}>{document.status}</ThemedText>
-                </ThemedView>
-              </ThemedView>
-              
-              <ThemedView style={styles.documentActions}>
+                  <Text style={styles.statusText}>{document.status}</Text>
+                </View>
+              </View>
+
+              <View style={styles.documentActions}>
                 <TouchableOpacity
                   style={styles.actionButton}
                   onPress={() => handleEditDocument(document.id)}
                 >
                   <IconSymbol name="pencil" size={16} color="#007AFF" />
-                  <ThemedText style={styles.actionButtonText}>Edit</ThemedText>
+                  <Text style={styles.actionButtonText}>Edit</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
@@ -163,14 +161,14 @@ export default function ManageDocumentsScreen() {
                   onPress={() => handleDeleteDocument(document.id)}
                 >
                   <IconSymbol name="trash" size={16} color="#FF3B30" />
-                  <ThemedText style={[styles.actionButtonText, styles.dangerText]}>
+                  <Text style={[styles.actionButtonText, styles.dangerText]}>
                     Delete
-                  </ThemedText>
+                  </Text>
                 </TouchableOpacity>
-              </ThemedView>
-            </ThemedView>
+              </View>
+            </View>
           ))}
-        </ThemedView>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

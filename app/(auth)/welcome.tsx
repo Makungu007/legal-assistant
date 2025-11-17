@@ -1,7 +1,5 @@
 import { router } from 'expo-router';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -17,54 +15,54 @@ export default function WelcomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       {/* Hero Section */}
-      <ThemedView style={styles.heroSection}>
+      <View style={styles.heroSection}>
         <View style={styles.iconContainer}>
           <IconSymbol name="scale.3d" size={80} color="#007AFF" />
         </View>
         
-        <ThemedText style={styles.title}>
+        <Text style={styles.title}>
           Legal Assistant
-        </ThemedText>
+        </Text>
         
-        <ThemedText style={styles.subtitle}>
+        <Text style={styles.subtitle}>
           Get instant legal guidance and expert advice whenever you need it
-        </ThemedText>
-      </ThemedView>
+        </Text>
+      </View>
 
       {/* Features Section */}
-      <ThemedView style={styles.featuresSection}>
+      <View style={styles.featuresSection}>
         <View style={styles.feature}>
           <IconSymbol name="questionmark.bubble" size={24} color="#4CAF50" />
-          <ThemedText style={styles.featureText}>Ask legal questions</ThemedText>
+          <Text style={styles.featureText}>Ask legal questions</Text>
         </View>
         
         <View style={styles.feature}>
           <IconSymbol name="book.closed" size={24} color="#FF9500" />
-          <ThemedText style={styles.featureText}>Browse legal categories</ThemedText>
+          <Text style={styles.featureText}>Browse legal categories</Text>
         </View>
         
         <View style={styles.feature}>
           <IconSymbol name="lightbulb" size={24} color="#007AFF" />
-          <ThemedText style={styles.featureText}>Get expert guidance</ThemedText>
+          <Text style={styles.featureText}>Get expert guidance</Text>
         </View>
-      </ThemedView>
+      </View>
 
       {/* Action Buttons */}
-      <ThemedView style={styles.actionSection}>
+      <View style={styles.actionSection}>
         <TouchableOpacity 
           style={styles.primaryButton}
           onPress={handleGetStarted}
         >
-          <ThemedText style={styles.primaryButtonText}>Get Started</ThemedText>
+          <Text style={styles.primaryButtonText}>Get Started</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
           style={styles.secondaryButton}
           onPress={handleSkipToApp}
         >
-          <ThemedText style={styles.secondaryButtonText}>Continue as Guest</ThemedText>
+          <Text style={styles.secondaryButtonText}>Continue as Guest</Text>
         </TouchableOpacity>
-      </ThemedView>
+      </View>
     </SafeAreaView>
   );
 }

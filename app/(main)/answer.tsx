@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { router, useLocalSearchParams } from 'expo-router';
-import { StyleSheet, TouchableOpacity, ScrollView, Share } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, ScrollView, Share, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -45,14 +43,14 @@ export default function AnswerScreen() {
   if (isLoading) {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
-        <ThemedView style={styles.loadingContainer}>
-          <ThemedText type="title" style={styles.loadingTitle}>
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loadingTitle}>
             Analyzing Your Question...
-          </ThemedText>
-          <ThemedText style={styles.loadingSubtitle}>
+          </Text>
+          <Text style={styles.loadingSubtitle}>
             Please wait while I gather relevant legal information
-          </ThemedText>
-        </ThemedView>
+          </Text>
+        </View>
       </SafeAreaView>
     );
   }
@@ -60,40 +58,40 @@ export default function AnswerScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView style={styles.content}>
-        <ThemedView style={styles.questionSection}>
-          <ThemedText style={styles.questionLabel}>Your Question:</ThemedText>
-          <ThemedView style={styles.questionBox}>
-            <ThemedText style={styles.questionText}>{question}</ThemedText>
-          </ThemedView>
-        </ThemedView>
+        <View style={styles.questionSection}>
+          <Text style={styles.questionLabel}>Your Question:</Text>
+          <View style={styles.questionBox}>
+            <Text style={styles.questionText}>{question}</Text>
+          </View>
+        </View>
 
-        <ThemedView style={styles.answerSection}>
-          <ThemedText style={styles.answerLabel}>Legal Guidance:</ThemedText>
-          <ThemedView style={styles.answerBox}>
-            <ThemedText style={styles.answerText}>{answer}</ThemedText>
-          </ThemedView>
-        </ThemedView>
+        <View style={styles.answerSection}>
+          <Text style={styles.answerLabel}>Legal Guidance:</Text>
+          <View style={styles.answerBox}>
+            <Text style={styles.answerText}>{answer}</Text>
+          </View>
+        </View>
 
-        <ThemedView style={styles.disclaimerSection}>
-          <ThemedView style={styles.disclaimerBox}>
+        <View style={styles.disclaimerSection}>
+          <View style={styles.disclaimerBox}>
             <IconSymbol name="exclamationmark.triangle" size={20} color="#FF6B6B" />
-            <ThemedText style={styles.disclaimerText}>
+            <Text style={styles.disclaimerText}>
               This information is for educational purposes only and does not constitute legal advice. 
               Please consult with a qualified attorney for specific legal matters.
-            </ThemedText>
-          </ThemedView>
-        </ThemedView>
+            </Text>
+          </View>
+        </View>
       </ScrollView>
 
-      <ThemedView style={styles.actionButtons}>
+      <View style={styles.actionButtons}>
         <TouchableOpacity style={styles.actionButton} onPress={handleShareAnswer}>
           <IconSymbol name="square.and.arrow.up" size={20} color="#007AFF" />
-          <ThemedText style={styles.actionButtonText}>Share</ThemedText>
+          <Text style={styles.actionButtonText}>Share</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.actionButton} onPress={handleFindMore}>
           <IconSymbol name="book" size={20} color="#007AFF" />
-          <ThemedText style={styles.actionButtonText}>More Info</ThemedText>
+          <Text style={styles.actionButtonText}>More Info</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
@@ -101,11 +99,11 @@ export default function AnswerScreen() {
           onPress={handleAskAnother}
         >
           <IconSymbol name="plus" size={20} color="white" />
-          <ThemedText style={[styles.actionButtonText, styles.primaryActionText]}>
+          <Text style={[styles.actionButtonText, styles.primaryActionText]}>
             Ask Another
-          </ThemedText>
+          </Text>
         </TouchableOpacity>
-      </ThemedView>
+      </View>
     </SafeAreaView>
   );
 }

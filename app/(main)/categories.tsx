@@ -1,7 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
-import { StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, ScrollView, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -105,9 +103,9 @@ export default function CategoriesScreen() {
   if (!category) {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
-        <ThemedView style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-          <ThemedText type="title">Category not found</ThemedText>
-        </ThemedView>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+          <Text style={styles.headerTitle}>Category not found</Text>
+        </View>
       </SafeAreaView>
     );
   }
@@ -115,64 +113,64 @@ export default function CategoriesScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView style={styles.content}>
-        <ThemedView style={[styles.header, { backgroundColor: category.color }]}>
+        <View style={[styles.header, { backgroundColor: category.color }]}>
           <IconSymbol name={category.icon as any} size={48} color="white" />
-          <ThemedText style={styles.headerTitle}>{category.title}</ThemedText>
-          <ThemedText style={styles.headerDescription}>{category.description}</ThemedText>
-        </ThemedView>
+          <Text style={styles.headerTitle}>{category.title}</Text>
+          <Text style={styles.headerDescription}>{category.description}</Text>
+        </View>
 
-        <ThemedView style={styles.topicsSection}>
-          <ThemedText style={styles.sectionTitle}>Common Topics</ThemedText>
+        <View style={styles.topicsSection}>
+          <Text style={styles.sectionTitle}>Common Topics</Text>
           
           {category.topics.map((topic, index) => (
             <TouchableOpacity key={index} style={styles.topicItem}>
-              <ThemedView style={styles.topicContent}>
+              <View style={styles.topicContent}>
                 <IconSymbol name="chevron.right" size={16} color="#007AFF" />
-                <ThemedText style={styles.topicText}>{topic}</ThemedText>
-              </ThemedView>
+                <Text style={styles.topicText}>{topic}</Text>
+              </View>
             </TouchableOpacity>
           ))}
-        </ThemedView>
+        </View>
 
-        <ThemedView style={styles.helpSection}>
-          <ThemedText style={styles.helpTitle}>Need Specific Help?</ThemedText>
-          <ThemedText style={styles.helpText}>
+        <View style={styles.helpSection}>
+          <Text style={styles.helpTitle}>Need Specific Help?</Text>
+          <Text style={styles.helpText}>
             Our legal assistant can help answer specific questions about {category.title.toLowerCase()}. 
             Ask detailed questions to get personalized guidance.
-          </ThemedText>
+          </Text>
           
           <TouchableOpacity style={styles.askQuestionButton}>
-            <ThemedText style={styles.askQuestionButtonText}>
+            <Text style={styles.askQuestionButtonText}>
               Ask a Question About {category.title}
-            </ThemedText>
+            </Text>
           </TouchableOpacity>
-        </ThemedView>
+        </View>
 
-        <ThemedView style={styles.resourcesSection}>
-          <ThemedText style={styles.sectionTitle}>Quick Resources</ThemedText>
-          
-          <ThemedView style={styles.resourceGrid}>
+        <View style={styles.resourcesSection}>
+          <Text style={styles.sectionTitle}>Quick Resources</Text>
+
+          <View style={styles.resourceGrid}>
             <TouchableOpacity style={styles.resourceCard}>
               <IconSymbol name="doc.text" size={24} color="#007AFF" />
-              <ThemedText style={styles.resourceTitle}>Legal Forms</ThemedText>
+              <Text style={styles.resourceTitle}>Legal Forms</Text>
             </TouchableOpacity>
             
             <TouchableOpacity style={styles.resourceCard}>
               <IconSymbol name="phone" size={24} color="#007AFF" />
-              <ThemedText style={styles.resourceTitle}>Find Lawyers</ThemedText>
+              <Text style={styles.resourceTitle}>Find Lawyers</Text>
             </TouchableOpacity>
             
             <TouchableOpacity style={styles.resourceCard}>
               <IconSymbol name="book" size={24} color="#007AFF" />
-              <ThemedText style={styles.resourceTitle}>Legal Guide</ThemedText>
+              <Text style={styles.resourceTitle}>Legal Guide</Text>
             </TouchableOpacity>
             
             <TouchableOpacity style={styles.resourceCard}>
               <IconSymbol name="questionmark.circle" size={24} color="#007AFF" />
-              <ThemedText style={styles.resourceTitle}>FAQ</ThemedText>
+              <Text style={styles.resourceTitle}>FAQ</Text>
             </TouchableOpacity>
-          </ThemedView>
-        </ThemedView>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,6 +1,4 @@
-import { StyleSheet, TouchableOpacity, ScrollView, Linking } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, ScrollView, Linking, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -73,40 +71,40 @@ export default function LegalInfoScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView style={styles.content}>
-        <ThemedView style={styles.header}>
-          <ThemedText type="title" style={styles.title}>
+        <View style={styles.header}>
+          <Text style={styles.title}>
             Legal Information
-          </ThemedText>
-          <ThemedText style={styles.subtitle}>
+          </Text>
+          <Text style={styles.subtitle}>
             Essential legal resources and information
-          </ThemedText>
-        </ThemedView>
+          </Text>
+        </View>
 
-        <ThemedView style={styles.sectionsContainer}>
+        <View style={styles.sectionsContainer}>
           {LEGAL_INFO_SECTIONS.map((section) => (
-            <ThemedView key={section.id} style={styles.section}>
-              <ThemedView style={styles.sectionHeader}>
+            <View key={section.id} style={styles.section}>
+              <View style={styles.sectionHeader}>
                 <IconSymbol name={section.icon as any} size={24} color="#007AFF" />
-                <ThemedText style={styles.sectionTitle}>{section.title}</ThemedText>
-              </ThemedView>
+                <Text style={styles.sectionTitle}>{section.title}</Text>
+              </View>
               
-              <ThemedView style={styles.sectionContent}>
+              <View style={styles.sectionContent}>
                 {section.items.map((item, index) => (
                   <TouchableOpacity key={index} style={styles.infoItem}>
-                    <ThemedText style={styles.infoItemText}>{item}</ThemedText>
+                    <Text style={styles.infoItemText}>{item}</Text>
                     <IconSymbol name="chevron.right" size={16} color="#999" />
                   </TouchableOpacity>
                 ))}
-              </ThemedView>
-            </ThemedView>
+              </View>
+            </View>
           ))}
-        </ThemedView>
+        </View>
 
-        <ThemedView style={styles.emergencySection}>
-          <ThemedText style={styles.emergencyTitle}>Emergency Legal Contacts</ThemedText>
-          <ThemedText style={styles.emergencySubtitle}>
+        <View style={styles.emergencySection}>
+          <Text style={styles.emergencyTitle}>Emergency Legal Contacts</Text>
+          <Text style={styles.emergencySubtitle}>
             If you need immediate legal assistance
-          </ThemedText>
+          </Text>
           
           {EMERGENCY_CONTACTS.map((contact, index) => (
             <TouchableOpacity
@@ -114,25 +112,25 @@ export default function LegalInfoScreen() {
               style={styles.emergencyContact}
               onPress={() => handleCallEmergency(contact.phone)}
             >
-              <ThemedView style={styles.emergencyContactInfo}>
-                <ThemedText style={styles.emergencyContactName}>{contact.name}</ThemedText>
-                <ThemedText style={styles.emergencyContactPhone}>{contact.phone}</ThemedText>
-                <ThemedText style={styles.emergencyContactAvailable}>{contact.available}</ThemedText>
-              </ThemedView>
+              <View style={styles.emergencyContactInfo}>
+                <Text style={styles.emergencyContactName}>{contact.name}</Text>
+                <Text style={styles.emergencyContactPhone}>{contact.phone}</Text>
+                <Text style={styles.emergencyContactAvailable}>{contact.available}</Text>
+              </View>
               <IconSymbol name="phone" size={20} color="#FF6B6B" />
             </TouchableOpacity>
           ))}
-        </ThemedView>
+        </View>
 
-        <ThemedView style={styles.onlineResourcesSection}>
-          <ThemedText style={styles.sectionTitle}>Online Legal Resources</ThemedText>
+        <View style={styles.onlineResourcesSection}>
+          <Text style={styles.sectionTitle}>Online Legal Resources</Text>
           
           <TouchableOpacity 
             style={styles.resourceButton}
             onPress={() => handleOpenWebResource('https://www.legal-aid.org')}
           >
             <IconSymbol name="globe" size={20} color="#007AFF" />
-            <ThemedText style={styles.resourceButtonText}>Legal Aid Directory</ThemedText>
+            <Text style={styles.resourceButtonText}>Legal Aid Directory</Text>
           </TouchableOpacity>
           
           <TouchableOpacity 
@@ -140,7 +138,7 @@ export default function LegalInfoScreen() {
             onPress={() => handleOpenWebResource('https://www.courts.gov')}
           >
             <IconSymbol name="building.columns" size={20} color="#007AFF" />
-            <ThemedText style={styles.resourceButtonText}>Court Information</ThemedText>
+            <Text style={styles.resourceButtonText}>Court Information</Text>
           </TouchableOpacity>
           
           <TouchableOpacity 
@@ -148,17 +146,17 @@ export default function LegalInfoScreen() {
             onPress={() => handleOpenWebResource('https://www.lawhelp.org')}
           >
             <IconSymbol name="questionmark.circle" size={20} color="#007AFF" />
-            <ThemedText style={styles.resourceButtonText}>Self-Help Legal Resources</ThemedText>
+            <Text style={styles.resourceButtonText}>Self-Help Legal Resources</Text>
           </TouchableOpacity>
-        </ThemedView>
+        </View>
 
-        <ThemedView style={styles.disclaimerSection}>
+        <View style={styles.disclaimerSection}>
           <IconSymbol name="exclamationmark.triangle" size={20} color="#FF6B6B" />
-          <ThemedText style={styles.disclaimerText}>
+          <Text style={styles.disclaimerText}>
             The information provided is for educational purposes only and should not be considered as legal advice. 
             Always consult with a qualified attorney for legal matters specific to your situation.
-          </ThemedText>
-        </ThemedView>
+          </Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

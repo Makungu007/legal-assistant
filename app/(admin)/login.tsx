@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { router } from 'expo-router';
-import { StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, Alert, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -36,20 +34,20 @@ export default function AdminLoginScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
-      <ThemedView style={styles.header}>
+      <View style={styles.header}>
         <IconSymbol name="lock.shield" size={60} color="#FF6B6B" />
-        <ThemedText type="title" style={styles.title}>
+        <Text style={styles.title}>
           Admin Access
-        </ThemedText>
-        <ThemedText style={styles.subtitle}>
+        </Text>
+        <Text style={styles.subtitle}>
           Enter PIN to access admin features
-        </ThemedText>
-      </ThemedView>
+        </Text>
+      </View>
 
-      <ThemedView style={styles.pinSection}>
-        <ThemedView style={styles.pinDisplay}>
+      <View style={styles.pinSection}>
+        <View style={styles.pinDisplay}>
           {[0, 1, 2, 3].map((index) => (
-            <ThemedView
+            <View
               key={index}
               style={[
                 styles.pinDot,
@@ -57,58 +55,58 @@ export default function AdminLoginScreen() {
               ]}
             />
           ))}
-        </ThemedView>
+        </View>
 
-        <ThemedView style={styles.keypad}>
-          <ThemedView style={styles.keypadRow}>
+        <View style={styles.keypad}>
+          <View style={styles.keypadRow}>
             {['1', '2', '3'].map((digit) => (
               <TouchableOpacity
                 key={digit}
                 style={styles.keypadButton}
                 onPress={() => handlePinInput(digit)}
               >
-                <ThemedText style={styles.keypadButtonText}>{digit}</ThemedText>
+                <Text style={styles.keypadButtonText}>{digit}</Text>
               </TouchableOpacity>
             ))}
-          </ThemedView>
+          </View>
 
-          <ThemedView style={styles.keypadRow}>
+          <View style={styles.keypadRow}>
             {['4', '5', '6'].map((digit) => (
               <TouchableOpacity
                 key={digit}
                 style={styles.keypadButton}
                 onPress={() => handlePinInput(digit)}
               >
-                <ThemedText style={styles.keypadButtonText}>{digit}</ThemedText>
+                <Text style={styles.keypadButtonText}>{digit}</Text>
               </TouchableOpacity>
             ))}
-          </ThemedView>
+          </View>
 
-          <ThemedView style={styles.keypadRow}>
+          <View style={styles.keypadRow}>
             {['7', '8', '9'].map((digit) => (
               <TouchableOpacity
                 key={digit}
                 style={styles.keypadButton}
                 onPress={() => handlePinInput(digit)}
               >
-                <ThemedText style={styles.keypadButtonText}>{digit}</ThemedText>
+                <Text style={styles.keypadButtonText}>{digit}</Text>
               </TouchableOpacity>
             ))}
-          </ThemedView>
+          </View>
 
-          <ThemedView style={styles.keypadRow}>
+          <View style={styles.keypadRow}>
             <TouchableOpacity
               style={styles.keypadButton}
               onPress={handleClear}
             >
-              <ThemedText style={styles.keypadButtonText}>Clear</ThemedText>
+              <Text style={styles.keypadButtonText}>Clear</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.keypadButton}
               onPress={() => handlePinInput('0')}
             >
-              <ThemedText style={styles.keypadButtonText}>0</ThemedText>
+              <Text style={styles.keypadButtonText}>0</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -117,22 +115,22 @@ export default function AdminLoginScreen() {
             >
               <IconSymbol name="delete.left" size={20} color="#007AFF" />
             </TouchableOpacity>
-          </ThemedView>
-        </ThemedView>
+          </View>
+        </View>
 
         <TouchableOpacity
           style={[styles.loginButton, pin.length === 4 && styles.loginButtonActive]}
           onPress={handleLogin}
           disabled={pin.length !== 4}
         >
-          <ThemedText style={[
+          <Text style={[
             styles.loginButtonText,
             pin.length === 4 && styles.loginButtonTextActive
           ]}>
             Access Admin Panel
-          </ThemedText>
+          </Text>
         </TouchableOpacity>
-      </ThemedView>
+      </View>
     </SafeAreaView>
   );
 }

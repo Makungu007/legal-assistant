@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, TouchableOpacity, ScrollView, Alert, TextInput } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, ScrollView, Alert, TextInput, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -76,51 +74,51 @@ export default function ManageCategoriesScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
-      <ThemedView style={styles.header}>
-        <ThemedText type="title" style={styles.title}>
+      <View style={styles.header}>
+        <Text style={styles.title}>
           Manage Categories
-        </ThemedText>
-        
+        </Text>
+
         <TouchableOpacity
           style={styles.addButton}
           onPress={() => setIsAddingCategory(true)}
         >
           <IconSymbol name="plus" size={16} color="white" />
-          <ThemedText style={styles.addButtonText}>Add Category</ThemedText>
+          <Text style={styles.addButtonText}>Add Category</Text>
         </TouchableOpacity>
-      </ThemedView>
+      </View>
 
       <ScrollView style={styles.content}>
-        <ThemedView style={styles.stats}>
-          <ThemedView style={styles.statCard}>
-            <ThemedText style={styles.statNumber}>{categories.length}</ThemedText>
-            <ThemedText style={styles.statLabel}>Total Categories</ThemedText>
-          </ThemedView>
-          
-          <ThemedView style={styles.statCard}>
-            <ThemedText style={styles.statNumber}>
+        <View style={styles.stats}>
+          <View style={styles.statCard}>
+            <Text style={styles.statNumber}>{categories.length}</Text>
+            <Text style={styles.statLabel}>Total Categories</Text>
+          </View>
+
+          <View style={styles.statCard}>
+            <Text style={styles.statNumber}>
               {categories.reduce((total, cat) => total + cat.documentCount, 0)}
-            </ThemedText>
-            <ThemedText style={styles.statLabel}>Total Documents</ThemedText>
-          </ThemedView>
-        </ThemedView>
+            </Text>
+            <Text style={styles.statLabel}>Total Documents</Text>
+          </View>
+        </View>
 
         {isAddingCategory && (
-          <ThemedView style={styles.addCategoryForm}>
-            <ThemedText style={styles.formTitle}>Add New Category</ThemedText>
-            
-            <ThemedView style={styles.inputGroup}>
-              <ThemedText style={styles.inputLabel}>Category Name</ThemedText>
+          <View style={styles.addCategoryForm}>
+            <Text style={styles.formTitle}>Add New Category</Text>
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.inputLabel}>Category Name</Text>
               <TextInput
                 style={styles.textInput}
                 placeholder="Enter category name"
                 value={newCategoryName}
                 onChangeText={setNewCategoryName}
               />
-            </ThemedView>
-            
-            <ThemedView style={styles.inputGroup}>
-              <ThemedText style={styles.inputLabel}>Description</ThemedText>
+            </View>
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.inputLabel}>Description</Text>
               <TextInput
                 style={[styles.textInput, styles.textArea]}
                 placeholder="Enter category description"
@@ -129,47 +127,47 @@ export default function ManageCategoriesScreen() {
                 multiline
                 numberOfLines={3}
               />
-            </ThemedView>
-            
-            <ThemedView style={styles.formButtons}>
+            </View>
+
+            <View style={styles.formButtons}>
               <TouchableOpacity style={styles.cancelButton} onPress={handleCancelAdd}>
-                <ThemedText style={styles.cancelButtonText}>Cancel</ThemedText>
+                <Text style={styles.cancelButtonText}>Cancel</Text>
               </TouchableOpacity>
               
               <TouchableOpacity style={styles.saveButton} onPress={handleAddCategory}>
-                <ThemedText style={styles.saveButtonText}>Save Category</ThemedText>
+                <Text style={styles.saveButtonText}>Save Category</Text>
               </TouchableOpacity>
-            </ThemedView>
-          </ThemedView>
+            </View>
+          </View>
         )}
 
-        <ThemedView style={styles.categoriesSection}>
-          <ThemedText style={styles.sectionTitle}>Categories</ThemedText>
-          
+        <View style={styles.categoriesSection}>
+          <Text style={styles.sectionTitle}>Categories</Text>
+
           {categories.map((category) => (
-            <ThemedView key={category.id} style={styles.categoryCard}>
-              <ThemedView style={styles.categoryHeader}>
-                <ThemedView style={styles.categoryInfo}>
-                  <ThemedView style={styles.categoryTitleRow}>
-                    <ThemedView
+            <View key={category.id} style={styles.categoryCard}>
+              <View style={styles.categoryHeader}>
+                <View style={styles.categoryInfo}>
+                  <View style={styles.categoryTitleRow}>
+                    <View
                       style={[styles.categoryColorIndicator, { backgroundColor: category.color }]}
                     />
-                    <ThemedText style={styles.categoryName}>{category.name}</ThemedText>
-                    <ThemedView style={styles.documentBadge}>
-                      <ThemedText style={styles.documentCount}>{category.documentCount}</ThemedText>
-                    </ThemedView>
-                  </ThemedView>
-                  <ThemedText style={styles.categoryDescription}>{category.description}</ThemedText>
-                </ThemedView>
-              </ThemedView>
-              
-              <ThemedView style={styles.categoryActions}>
+                    <Text style={styles.categoryName}>{category.name}</Text>
+                    <View style={styles.documentBadge}>
+                      <Text style={styles.documentCount}>{category.documentCount}</Text>
+                    </View>
+                  </View>
+                  <Text style={styles.categoryDescription}>{category.description}</Text>
+                </View>
+              </View>
+
+              <View style={styles.categoryActions}>
                 <TouchableOpacity
                   style={styles.actionButton}
                   onPress={() => handleEditCategory(category.id)}
                 >
                   <IconSymbol name="pencil" size={16} color="#007AFF" />
-                  <ThemedText style={styles.actionButtonText}>Edit</ThemedText>
+                  <Text style={styles.actionButtonText}>Edit</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
@@ -177,14 +175,14 @@ export default function ManageCategoriesScreen() {
                   onPress={() => handleDeleteCategory(category.id)}
                 >
                   <IconSymbol name="trash" size={16} color="#FF3B30" />
-                  <ThemedText style={[styles.actionButtonText, styles.dangerText]}>
+                  <Text style={[styles.actionButtonText, styles.dangerText]}>
                     Delete
-                  </ThemedText>
+                  </Text>
                 </TouchableOpacity>
-              </ThemedView>
-            </ThemedView>
+              </View>
+            </View>
           ))}
-        </ThemedView>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

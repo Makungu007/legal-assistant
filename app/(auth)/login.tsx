@@ -1,9 +1,7 @@
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { Alert, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { Alert, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LoginScreen() {
@@ -37,20 +35,20 @@ export default function LoginScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
         <ScrollView showsVerticalScrollIndicator={false}>
-      <ThemedView style={styles.header}>
-        <ThemedView style={styles.iconContainer}>
+      <View style={styles.header}>
+        <View style={styles.iconContainer}>
           <IconSymbol name="person.circle" size={60} color="#007AFF" />
-        </ThemedView>
-        <ThemedText style={styles.title}>Welcome Back</ThemedText>
-        <ThemedText style={styles.subtitle}>
+        </View>
+        <Text style={styles.title}>Welcome Back</Text>
+        <Text style={styles.subtitle}>
           Sign in to access personalized legal assistance
-        </ThemedText>
-      </ThemedView>
+        </Text>
+      </View>
 
-      <ThemedView style={styles.formContainer}>
-        <ThemedView style={styles.inputGroup}>
-          <ThemedText style={styles.label}>Email Address</ThemedText>
-          <ThemedView style={styles.inputContainer}>
+      <View style={styles.formContainer}>
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Email Address</Text>
+          <View style={styles.inputContainer}>
             <IconSymbol name="envelope" size={20} color="#666" />
             <TextInput
               style={styles.input}
@@ -61,12 +59,12 @@ export default function LoginScreen() {
               autoCapitalize="none"
               autoComplete="email"
             />
-          </ThemedView>
-        </ThemedView>
+          </View>
+        </View>
 
-        <ThemedView style={styles.inputGroup}>
-          <ThemedText style={styles.label}>Password</ThemedText>
-          <ThemedView style={styles.inputContainer}>
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Password</Text>
+          <View style={styles.inputContainer}>
             <IconSymbol name="lock" size={20} color="#666" />
             <TextInput
               style={styles.input}
@@ -76,11 +74,11 @@ export default function LoginScreen() {
               secureTextEntry
               autoComplete="password"
             />
-          </ThemedView>
-        </ThemedView>
+          </View>
+        </View>
 
         <TouchableOpacity style={styles.forgotPassword}>
-          <ThemedText style={styles.forgotPasswordText}>Forgot Password?</ThemedText>
+          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
@@ -88,25 +86,25 @@ export default function LoginScreen() {
           onPress={handleLogin}
           disabled={loading}
         >
-          <ThemedText style={styles.loginButtonText}>
+          <Text style={styles.loginButtonText}>
             {loading ? 'Signing In...' : 'Sign In'}
-          </ThemedText>
+          </Text>
         </TouchableOpacity>
 
        
-       <ThemedView style={styles.footer}>
-        <ThemedText style={styles.footerText}>
+       <View style={styles.footer}>
+        <Text style={styles.footerText}>
           Don&apos;t have an account?{' '}
           <TouchableOpacity onPress={() => router.push('/(auth)/register' as any)}>
-            <ThemedText style={styles.linkText}>Create Account</ThemedText>
+            <Text style={styles.linkText}>Create Account</Text>
           </TouchableOpacity>
-        </ThemedText>
-       </ThemedView>
+        </Text>
+       </View>
 
         <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
-          <ThemedText style={styles.skipButtonText}>Continue as Guest</ThemedText>
+          <Text style={styles.skipButtonText}>Continue as Guest</Text>
         </TouchableOpacity>
-      </ThemedView>
+      </View>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>

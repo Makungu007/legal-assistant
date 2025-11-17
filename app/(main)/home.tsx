@@ -1,7 +1,5 @@
 import { router } from 'expo-router';
-import { StyleSheet, TouchableOpacity, ScrollView, View } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, ScrollView, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -37,11 +35,11 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       {/* Header Section */}
-      <ThemedView style={styles.header}>
+      <View style={styles.header}>
         <View style={styles.headerTop}>
           <View style={styles.titleContainer}>
-            <ThemedText style={styles.title}>Legal Assistant</ThemedText>
-            <ThemedText style={styles.subtitle}>How can I help you today?</ThemedText>
+            <Text style={styles.title}>Legal Assistant</Text>
+            <Text style={styles.subtitle}>How can I help you today?</Text>
           </View>
           <TouchableOpacity 
             style={styles.adminButton}
@@ -50,27 +48,27 @@ export default function HomeScreen() {
             <IconSymbol name="gearshape.fill" size={20} color="white" />
           </TouchableOpacity>
         </View>
-      </ThemedView>
+      </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Ask Question Section */}
-        <ThemedView style={styles.askSection}>
+        <View style={styles.askSection}>
           <TouchableOpacity style={styles.askButton} onPress={handleAskQuestion}>
             <View style={styles.askButtonIcon}>
               <IconSymbol name="questionmark.bubble.fill" size={28} color="white" />
             </View>
             <View style={styles.askButtonContent}>
-              <ThemedText style={styles.askButtonTitle}>Ask a Legal Question</ThemedText>
-              <ThemedText style={styles.askButtonSubtitle}>Get instant legal guidance</ThemedText>
+              <Text style={styles.askButtonTitle}>Ask a Legal Question</Text>
+              <Text style={styles.askButtonSubtitle}>Get instant legal guidance</Text>
             </View>
             <IconSymbol name="arrow.right" size={20} color="white" />
           </TouchableOpacity>
-        </ThemedView>
+        </View>
 
         {/* Categories Section */}
-        <ThemedView style={styles.categoriesSection}>
-          <ThemedText style={styles.sectionTitle}>Browse Categories</ThemedText>
-          <ThemedView style={styles.categoriesGrid}>
+        <View style={styles.categoriesSection}>
+          <Text style={styles.sectionTitle}>Browse Categories</Text>
+          <View style={styles.categoriesGrid}>
             {LEGAL_CATEGORIES.map((category) => (
               <TouchableOpacity
                 key={category.id}
@@ -78,23 +76,23 @@ export default function HomeScreen() {
                 onPress={() => handleCategoryPress(category.id)}
               >
                 <IconSymbol name={category.icon as any} size={32} color="white" />
-                <ThemedText style={styles.categoryTitle}>{category.title}</ThemedText>
+                <Text style={styles.categoryTitle}>{category.title}</Text>
               </TouchableOpacity>
             ))}
-          </ThemedView>
-        </ThemedView>
+          </View>
+        </View>
 
         {/* Quick Actions */}
-        <ThemedView style={styles.quickActionsSection}>
-          <ThemedText style={styles.sectionTitle}>Quick Resources</ThemedText>
+        <View style={styles.quickActionsSection}>
+          <Text style={styles.sectionTitle}>Quick Resources</Text>
           <View style={styles.quickActions}>
             <TouchableOpacity
               style={styles.quickActionCard}
               onPress={navigateToLegalInfo}
             >
               <IconSymbol name="book.fill" size={24} color="#007AFF" />
-              <ThemedText style={styles.quickActionTitle}>Legal Info</ThemedText>
-              <ThemedText style={styles.quickActionSubtitle}>Resources & guides</ThemedText>
+              <Text style={styles.quickActionTitle}>Legal Info</Text>
+              <Text style={styles.quickActionSubtitle}>Resources & guides</Text>
             </TouchableOpacity>
             
             <TouchableOpacity
@@ -102,11 +100,11 @@ export default function HomeScreen() {
               onPress={() => {/* Add emergency contacts feature */}}
             >
               <IconSymbol name="phone.fill" size={24} color="#FF3B30" />
-              <ThemedText style={styles.quickActionTitle}>Emergency</ThemedText>
-              <ThemedText style={styles.quickActionSubtitle}>Legal contacts</ThemedText>
+              <Text style={styles.quickActionTitle}>Emergency</Text>
+              <Text style={styles.quickActionSubtitle}>Legal contacts</Text>
             </TouchableOpacity>
           </View>
-        </ThemedView>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

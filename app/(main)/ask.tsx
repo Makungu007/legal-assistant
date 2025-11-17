@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { router } from 'expo-router';
-import { StyleSheet, TouchableOpacity, TextInput, ScrollView, Alert, View, KeyboardAvoidingView, Platform } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, TextInput, ScrollView, Alert, View, KeyboardAvoidingView, Platform, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -55,19 +53,19 @@ export default function AskScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <ThemedView style={styles.header}>
+        <View style={styles.header}>
           <View style={styles.iconContainer}>
             <IconSymbol name="questionmark.bubble.fill" size={48} color="#007AFF" />
           </View>
-          <ThemedText style={styles.title}>Ask Your Legal Question</ThemedText>
-          <ThemedText style={styles.subtitle}>
+          <Text style={styles.title}>Ask Your Legal Question</Text>
+          <Text style={styles.subtitle}>
             Get expert legal guidance on any topic
-          </ThemedText>
-        </ThemedView>
+          </Text>
+        </View>
 
-        <ThemedView style={styles.inputSection}>
-          <ThemedText style={styles.inputLabel}>Your Question</ThemedText>
-          <ThemedView style={styles.inputContainer}>
+        <View style={styles.inputSection}>
+          <Text style={styles.inputLabel}>Your Question</Text>
+          <View style={styles.inputContainer}>
             <TextInput
               style={styles.textInput}
               placeholder="Type your legal question here..."
@@ -97,19 +95,19 @@ export default function AskScreen() {
                 />
               </TouchableOpacity>
             </View>
-          </ThemedView>
-          
-          <ThemedText style={styles.characterCount}>
-            {question.length} characters
-          </ThemedText>
-        </ThemedView>
+          </View>
 
-        <ThemedView style={styles.examplesSection}>
-          <ThemedText style={styles.sectionTitle}>Common Questions</ThemedText>
-          <ThemedText style={styles.sectionSubtitle}>
+          <Text style={styles.characterCount}>
+            {question.length} characters
+          </Text>
+        </View>
+
+        <View style={styles.examplesSection}>
+          <Text style={styles.sectionTitle}>Common Questions</Text>
+          <Text style={styles.sectionSubtitle}>
             Tap any example below to get started
-          </ThemedText>
-          
+          </Text>
+
           <View style={styles.examplesList}>
             {EXAMPLE_QUESTIONS.map((example, index) => (
               <TouchableOpacity
@@ -118,23 +116,23 @@ export default function AskScreen() {
                 onPress={() => handleExampleQuestion(example)}
               >
                 <IconSymbol name="quote.bubble" size={16} color="#007AFF" />
-                <ThemedText style={styles.exampleText}>{example}</ThemedText>
+                <Text style={styles.exampleText}>{example}</Text>
               </TouchableOpacity>
             ))}
           </View>
-        </ThemedView>
+        </View>
       </ScrollView>
 
-      <ThemedView style={styles.bottomSection}>
+      <View style={styles.bottomSection}>
         <TouchableOpacity 
           style={[styles.submitButton, !question.trim() && styles.submitButtonDisabled]}
           onPress={handleSubmitQuestion}
           disabled={!question.trim()}
         >
           <IconSymbol name="arrow.right" size={20} color="white" />
-          <ThemedText style={styles.submitButtonText}>Get Answer</ThemedText>
+          <Text style={styles.submitButtonText}>Get Answer</Text>
         </TouchableOpacity>
-      </ThemedView>
+      </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

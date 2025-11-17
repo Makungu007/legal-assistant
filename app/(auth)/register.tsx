@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { router } from 'expo-router';
-import { StyleSheet, TouchableOpacity, TextInput, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, TouchableOpacity, TextInput, Alert, KeyboardAvoidingView, Platform, ScrollView, View, Text } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -48,20 +46,20 @@ export default function RegisterScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        <ThemedView style={styles.header}>
-          <ThemedView style={styles.iconContainer}>
+        <View style={styles.header}>
+          <View style={styles.iconContainer}>
             <IconSymbol name="person.badge.plus" size={60} color="#007AFF" />
-          </ThemedView>
-          <ThemedText style={styles.title}>Create Account</ThemedText>
-          <ThemedText style={styles.subtitle}>
+          </View>
+          <Text style={styles.title}>Create Account</Text>
+          <Text style={styles.subtitle}>
             Join thousands getting personalized legal assistance
-          </ThemedText>
-        </ThemedView>
+          </Text>
+        </View>
 
-        <ThemedView style={styles.formContainer}>
-          <ThemedView style={styles.inputGroup}>
-            <ThemedText style={styles.label}>Full Name</ThemedText>
-            <ThemedView style={styles.inputContainer}>
+        <View style={styles.formContainer}>
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Full Name</Text>
+            <View style={styles.inputContainer}>
               <IconSymbol name="person" size={20} color="#666" />
               <TextInput
                 style={styles.input}
@@ -71,12 +69,12 @@ export default function RegisterScreen() {
                 autoComplete="name"
                 autoCapitalize="words"
               />
-            </ThemedView>
-          </ThemedView>
+            </View>
+          </View>
 
-          <ThemedView style={styles.inputGroup}>
-            <ThemedText style={styles.label}>Email Address</ThemedText>
-            <ThemedView style={styles.inputContainer}>
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Email Address</Text>
+            <View style={styles.inputContainer}>
               <IconSymbol name="envelope" size={20} color="#666" />
               <TextInput
                 style={styles.input}
@@ -87,12 +85,12 @@ export default function RegisterScreen() {
                 autoCapitalize="none"
                 autoComplete="email"
               />
-            </ThemedView>
-          </ThemedView>
+            </View>
+          </View>
 
-          <ThemedView style={styles.inputGroup}>
-            <ThemedText style={styles.label}>Password</ThemedText>
-            <ThemedView style={styles.inputContainer}>
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Password</Text>
+            <View style={styles.inputContainer}>
               <IconSymbol name="lock" size={20} color="#666" />
               <TextInput
                 style={styles.input}
@@ -102,12 +100,12 @@ export default function RegisterScreen() {
                 secureTextEntry
                 autoComplete="new-password"
               />
-            </ThemedView>
-          </ThemedView>
+            </View>
+          </View>
 
-          <ThemedView style={styles.inputGroup}>
-            <ThemedText style={styles.label}>Confirm Password</ThemedText>
-            <ThemedView style={styles.inputContainer}>
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Confirm Password</Text>
+            <View style={styles.inputContainer}>
               <IconSymbol name="lock.shield" size={20} color="#666" />
               <TextInput
                 style={styles.input}
@@ -117,32 +115,32 @@ export default function RegisterScreen() {
                 secureTextEntry
                 autoComplete="new-password"
               />
-            </ThemedView>
-          </ThemedView>
+            </View>
+          </View>
 
           <TouchableOpacity 
             style={[styles.registerButton, loading && styles.registerButtonDisabled]} 
             onPress={handleRegister}
             disabled={loading}
           >
-            <ThemedText style={styles.registerButtonText}>
+            <Text style={styles.registerButtonText}>
               {loading ? 'Creating Account...' : 'Create Account'}
-            </ThemedText>
+            </Text>
           </TouchableOpacity>
 
-           <ThemedView style={styles.footer}>
-          <ThemedText style={styles.footerText}>
+           <View style={styles.footer}>
+          <Text style={styles.footerText}>
             Already have an account?{' '}
             <TouchableOpacity onPress={() => router.push('/(auth)/login' as any)}>
-              <ThemedText style={styles.linkText}>Sign In</ThemedText>
+              <Text style={styles.linkText}>Sign In</Text>
             </TouchableOpacity>
-          </ThemedText>
-        </ThemedView>
+          </Text>
+        </View>
 
           <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
-            <ThemedText style={styles.skipButtonText}>Continue as Guest</ThemedText>
+            <Text style={styles.skipButtonText}>Continue as Guest</Text>
           </TouchableOpacity>
-        </ThemedView>
+        </View>
 
        
       </ScrollView>
