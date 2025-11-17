@@ -44,8 +44,9 @@ export default function RegisterScreen() {
     <SafeAreaView style={styles.container} edges={['top']}>
       <KeyboardAvoidingView 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
       >
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View style={styles.iconContainer}>
             <IconSymbol name="person.badge.plus" size={60} color="#007AFF" />
@@ -154,9 +155,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  scrollView: {
-    flex: 1,
-  },
   header: {
     paddingHorizontal: 32,
     paddingTop: 80,
@@ -180,7 +178,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: '#fefbfbff',
+    color: '#666666',
     textAlign: 'center',
     lineHeight: 22,
   },
